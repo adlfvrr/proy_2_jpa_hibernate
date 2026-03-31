@@ -1,0 +1,13 @@
+package com_proy_2_services;
+
+import com_proy_2_dao.IVehiculoDAO;
+
+public class VehiculoService {
+	
+	private IVehiculoDAO dao;
+	
+	public VehiculoService() {
+		this.dao = new VehiculoDAO();
+	}
+
+}

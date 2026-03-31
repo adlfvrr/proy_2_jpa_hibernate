@@ -1,0 +1,43 @@
+package com_proy_2_dao;
+
+import java.util.List;
+
+import com_proy_2_database.JPAUtil;
+import com_proy_2_entity.Vehiculo;
+import jakarta.persistence.*;
+
+public class VehiculoDAO implements IVehiculoDAO {
+
+	EntityManagerFactory em = JPAUtil.getEntityManagerFactory();
+	
+	@Override
+	public List<Vehiculo> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Vehiculo getById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void save(Vehiculo v) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void add(Vehiculo v) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void remove(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

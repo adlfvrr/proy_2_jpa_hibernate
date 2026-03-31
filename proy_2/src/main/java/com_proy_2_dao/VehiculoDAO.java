@@ -1,0 +1,99 @@
+package com_proy_2_dao;
+
+import java.util.List;
+
+import com_proy_2_database.JPAUtil;
+import com_proy_2_entity.Vehiculo;
+import jakarta.persistence.*;
+
+public class VehiculoDAO implements IVehiculoDAO {
+
+	private EntityManager getEM() {
+	    return JPAUtil.getEntityManagerFactory().createEntityManager();
+	}	
+	@Override
+	public List<Vehiculo> getAll() {
+		EntityManager em = getEM();
+		
+		try {
+		List<Vehiculo> listaVehiculos = em.createQuery("FROM Vehiculo", Vehiculo.class).getResultList();
+		return listaVehiculos;
+			}
+		catch(Exception ex) {
+			throw new RuntimeException("Error al obtener vehiculos ", ex);
+		}
+		finally {
+			em.close();
+		}
+		}
+
+	@Override
+	public Vehiculo getById(int id) {
+		EntityManager em = getEM();
+		
+		try {
+			return em.find(Vehiculo.class, id);
+		}
+		catch(Exception ex) {
+			throw new RuntimeException("Error al obtener el vehiculo con id  " + id, ex);
+		}
+		finally {
+			em.close();
+		}
+	}
+
+	@Override
+	public void save(Vehiculo v) {
+		EntityManager em = getEM();
+		
+		try {
+			em.getTransaction().begin();
+			em.merge(v);
+			em.getTransaction().commit();
+		}
+		catch(Exception ex) {
+			em.getTransaction().rollback();
+			throw new RuntimeException("Error al actualizar el vehiculo ", ex);
+		}
+		finally {
+			em.close();
+		}
+	}
+
+	@Override
+	public void add(Vehiculo v) {
+		EntityManager em = getEM();
+		
+		try {
+			em.getTransaction().begin();
+			em.persist(v);
+			em.getTransaction().commit();
+		}
+		catch(Exception ex) {
+			em.getTransaction().rollback();
+			throw new RuntimeException("Error al guardar el vehiculo ", ex);
+		}
+		finally {
+			em.close();
+		}
+		
+	}
+
+	@Override
+	public void remove(int id) {
+	EntityManager em = getEM();
+		
+		try {
+			em.getTransaction().begin();
+			em.remove(em.find(Vehiculo.class, id));
+			em.getTransaction().commit();
+		}
+		catch(Exception ex) {
+			em.getTransaction().rollback();
+			throw new RuntimeException("Error al borrar el vehiculo ", ex);
+		}
+		finally {
+			em.close();
+		}
+	}
+}

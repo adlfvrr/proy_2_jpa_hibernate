@@ -1,0 +1,33 @@
+package com_proy_2_entity;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "Motos")
+public class Moto extends Vehiculo {
+
+	@Column(name = "cilindrada")
+	private int cilindrada;
+
+	public int getCilindrada() {
+		return cilindrada;
+	}
+
+	public void setCilindrada(int cilindrada) {
+		this.cilindrada = cilindrada;
+	}
+	
+	public Moto() {
+		
+	}
+	
+	public Moto(String marca, double precio, int anio, int cilindrada) {
+		super(marca, precio, anio);
+		this.cilindrada = cilindrada;
+	}
+	
+	public String toString() {
+		return super.toString() + "- " + this.getCilindrada() + "cc";
+	}
+	
+}

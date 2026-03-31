@@ -1,0 +1,38 @@
+package com_proy_2_entity;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "Autos")
+public class Auto extends Vehiculo {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	@Column(name = "cant_puertas")
+	private int cant_puertas;
+
+	public int getCant_puertas() {
+		return cant_puertas;
+	}
+
+	public void setCant_puertas(int cant_puertas) {
+		this.cant_puertas = cant_puertas;
+	}
+	
+	public Auto() {
+		
+	}
+	
+	public Auto(String marca, double precio, int anio, int cant_puertas) {
+		super(marca, precio, anio);
+		this.cant_puertas = cant_puertas;
+	}
+	
+	@Override
+	public String toString() {
+		return super.toString() + "- " + this.getCant_puertas();
+	}
+	
+}

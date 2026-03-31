@@ -1,0 +1,7 @@
+1774976367093	Encapsulate field 'id, ...'
+1774976371298	Encapsulate field 'marca, ...'
+1774976376441	Encapsulate field 'precio, ...'
+1774976381881	Encapsulate field 'anio, ...'
+1774976527915	Encapsulate field 'cant_puertas, ...'
+1774976740001	Encapsulate field 'cilindrada, ...'
+1774976947743	Rename package 'IVehiculoDAO'

@@ -1,0 +1,5 @@
+package com_proy_2_database;
+
+public class JPAUtil {
+
+}

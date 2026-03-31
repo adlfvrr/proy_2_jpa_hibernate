@@ -1,0 +1,20 @@
+package com_proy_2_entity;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "Motos")
+public class Motos {
+
+	@Column(name = "cilindrada")
+	private int cilindrada;
+
+	public int getCilindrada() {
+		return cilindrada;
+	}
+
+	public void setCilindrada(int cilindrada) {
+		this.cilindrada = cilindrada;
+	}
+	
+}
