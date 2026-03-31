@@ -1,8 +1,5 @@
 --Nos aseguramos que no existan las tables
 
-ALTER DATABASE proy_2_jpa SET search_path TO practica_prog_iii, public;
-
-
 drop table if exists Vehiculos;
 drop table if exists Motos;
 drop table if exists Autos;
