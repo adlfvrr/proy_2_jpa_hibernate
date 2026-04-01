@@ -1,8 +1,11 @@
 --Nos aseguramos que no existan las tables
 
+<<<<<<< HEAD
 SET search_path TO public;
 
 
+=======
+>>>>>>> c842f9e630ef5396da312a667cd964e5fcb29d83
 drop table if exists Vehiculos;
 drop table if exists Motos;
 drop table if exists Autos;
