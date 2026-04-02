@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.proy.vehiculos_api.entity.Vehiculo;
+import com.proy.vehiculos_api.exception.*;
 import com.proy.vehiculos_api.repository.VehiculoRepository;
 
 @Service
@@ -22,7 +23,7 @@ public class VehiculoService {
 		if(id <= 0) {
 			throw new RuntimeException("La id debe ser mayor a 0");
 		}
-		return this.repository.findById(id).orElseThrow(() -> new RuntimeException("Vehiculo con id " + id + " no fue encontrado"));
+		return this.repository.findById(id).orElseThrow(() -> new VehicleNotFoundException(id));
 	}
 	
 	public Vehiculo actualizarVehiculo(Vehiculo v) {
@@ -31,6 +32,12 @@ public class VehiculoService {
 	}
 	
 	public Vehiculo agregarVehiculo(Vehiculo v) {
+		if(v.getAnio() == 0) {
+			throw new WrongVehicleYearException("Ingresar año del vehículo");
+		}
+		else if(v.getMarca() == null) {
+			throw new WrongVehicleBrandException("Ingresar marca del vehículo");
+		}
 		return this.repository.save(v);
 		
 	}

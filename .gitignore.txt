@@ -1,1 +1,5 @@
 vehiculos-api/src/main/resources/application.properties
+**/target/
+proy_2/src/main/resources/META-INF/persistence.xml
+
+
