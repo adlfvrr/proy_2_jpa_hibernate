@@ -9,7 +9,7 @@ public class Vehiculo {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	@Column(name = "marca")
 	private String marca;
 	@Column(name = "precio")
@@ -18,10 +18,10 @@ public class Vehiculo {
 	private int anio;
 	
 	//getters and setters
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getMarca() {

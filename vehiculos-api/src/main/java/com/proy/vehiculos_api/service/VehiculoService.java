@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.proy.vehiculos_api.dto.VehiculoDTO;
 import com.proy.vehiculos_api.entity.Vehiculo;
 import com.proy.vehiculos_api.exception.*;
 import com.proy.vehiculos_api.repository.VehiculoRepository;
@@ -19,11 +20,15 @@ public class VehiculoService {
 		return this.repository.findAll();
 	}
 
-	public Vehiculo obtenerPorId(int id) {
-		if(id <= 0) {
-			throw new RuntimeException("La id debe ser mayor a 0");
+	public VehiculoDTO obtenerPorId(Long id) {
+		
+		if(id <= 0 || id == null) {
+			throw new InvalidVehicleIdException(id);
 		}
-		return this.repository.findById(id).orElseThrow(() -> new VehicleNotFoundException(id));
+		
+		Vehiculo v = this.repository.findById(id).orElseThrow(() -> new VehicleNotFoundException(id));
+		
+		return new VehiculoDTO(v.getMarca(), v.getPrecio(), v.getAnio());
 	}
 	
 	public Vehiculo actualizarVehiculo(Vehiculo v) {
@@ -42,9 +47,9 @@ public class VehiculoService {
 		
 	}
 	
-	public void borrarVehiculo(int id) {
-		if(id <= 0) {
-			throw new RuntimeException("La id debe ser mayor a 0");
+	public void borrarVehiculo(Long id) {
+		if(id <= 0 || id == null) {
+			throw new InvalidVehicleIdException(id);
 		}
 		this.repository.deleteById(id);
 		
