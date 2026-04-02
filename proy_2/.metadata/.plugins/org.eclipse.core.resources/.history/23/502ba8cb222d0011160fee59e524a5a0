@@ -1,9 +1,0 @@
-package com_proy_2_entity;
-
-import jakarta.persistence.*;
-
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Vehiculo {
-
-}

@@ -1,9 +1,0 @@
-package com_proy_2_entity;
-
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "Motos")
-public class Motos {
-
-}
