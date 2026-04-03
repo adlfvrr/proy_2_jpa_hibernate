@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.proy.vehiculos_api.dto.VehiculoDTO;
 import com.proy.vehiculos_api.entity.Vehiculo;
 import com.proy.vehiculos_api.exception.*;
 import com.proy.vehiculos_api.repository.VehiculoRepository;
@@ -20,15 +19,14 @@ public class VehiculoService {
 		return this.repository.findAll();
 	}
 
-	public VehiculoDTO obtenerPorId(Long id) {
+	public Vehiculo obtenerPorId(Long id) {
 		
 		if(id <= 0 || id == null) {
 			throw new InvalidVehicleIdException(id);
 		}
 		
-		Vehiculo v = this.repository.findById(id).orElseThrow(() -> new VehicleNotFoundException(id));
+		return this.repository.findById(id).orElseThrow(() -> new VehicleNotFoundException(id));
 		
-		return new VehiculoDTO(v.getMarca(), v.getPrecio(), v.getAnio());
 	}
 	
 	public Vehiculo actualizarVehiculo(Vehiculo v) {

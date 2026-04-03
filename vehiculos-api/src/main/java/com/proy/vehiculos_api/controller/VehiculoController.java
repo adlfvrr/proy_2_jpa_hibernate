@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.proy.vehiculos_api.dto.VehiculoDTO;
 import com.proy.vehiculos_api.entity.Vehiculo;
 import com.proy.vehiculos_api.service.VehiculoService;
 
@@ -34,7 +33,7 @@ public class VehiculoController {
 	}
 	
 	@GetMapping("/{id}")
-	public VehiculoDTO obtenerPorId(@PathVariable Long id) {
+	public Vehiculo obtenerPorId(@PathVariable Long id) {
 		return service.obtenerPorId(id);
 	}
 	
